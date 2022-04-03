@@ -17,7 +17,7 @@ public class Cliente {
     private String apellido;
     private String telefono;
     private String email;
-    private ArrayList<Deuda> deudas;
+    private Deuda deuda;
 
     public Cliente() {
     }
@@ -34,13 +34,13 @@ public class Cliente {
         this.email = email;
     }
 
-    public Cliente(String id, String nombre, String apellido, String telefono, String email, ArrayList<Deuda> deudas) {
+    public Cliente(String id, String nombre, String apellido, String telefono, String email, Deuda deuda) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
         this.email = email;
-        this.deudas = deudas;
+        this.deuda = deuda;
     }
 
     public String getId() {
@@ -83,12 +83,12 @@ public class Cliente {
         this.email = email;
     }
 
-    public ArrayList<Deuda> getDeudas() {
-        return deudas;
+    public Deuda getDeuda() {
+        return deuda;
     }
 
-    public void setDeudas(ArrayList<Deuda> deudas) {
-        this.deudas = deudas;
+    public void setDeuda(Deuda deuda) {
+        this.deuda = deuda;
     }
     
     

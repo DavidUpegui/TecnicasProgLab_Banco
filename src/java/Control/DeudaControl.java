@@ -20,6 +20,11 @@ import java.util.Locale;
 
 public class DeudaControl {
     
+    /**
+     * 
+     * @param deuda La deuda a la que se quiere calcular la cuota
+     * @return double  
+     */
     public static double calcularCuota(Deuda deuda){
         double valorDeuda = (double) deuda.getValorDeuda();
         double interes = (double) deuda.getValorInteres();
@@ -28,6 +33,11 @@ public class DeudaControl {
         return c;
     }
     
+    /**
+     * 
+     * @param deuda La deuda a la que se quiere calcular la cuota
+     * @return ArrayList
+     */
     public static ArrayList<ArrayList> calcularMatrizAmort(Deuda deuda){
         int tiempoDePago;
         double cuota;

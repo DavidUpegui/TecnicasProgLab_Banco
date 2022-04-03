@@ -15,8 +15,18 @@ public class Deuda {
     private double valorDeuda;
     private double valorInteres;
     private int tiempoDePago;
-    private LocalDateTime fechaPrestamo;
-    private LocalDateTime fechaLimiteCancelacion;   
+    private String fechaPrestamo;
+    private String fechaLimiteCancelacion;   
+    
+        public Deuda() {
+    }
+
+    public Deuda(double valorDeuda, double valorInteres, int tiempoDePago, String fechaPrestamo) {
+        this.valorDeuda = valorDeuda;
+        this.valorInteres = valorInteres;
+        this.tiempoDePago = tiempoDePago;
+        this.fechaPrestamo = fechaPrestamo;
+    }
 
     public Deuda(double valorDeuda, double valorInteres, int tiempoDePago) {
         this.valorDeuda = valorDeuda;
@@ -24,7 +34,9 @@ public class Deuda {
         this.tiempoDePago = tiempoDePago;
     }
 
-    public Deuda() {
+    public Deuda(double valorDeuda, int tiempoDePago) {
+        this.valorDeuda = valorDeuda;
+        this.tiempoDePago = tiempoDePago;
     }
 
     public double getValorDeuda() {
@@ -51,19 +63,19 @@ public class Deuda {
         this.tiempoDePago = tiempoDePago;
     }
 
-    public LocalDateTime getFechaPrestamo() {
+    public String getFechaPrestamo() {
         return fechaPrestamo;
     }
 
-    public void setFechaPrestamo(LocalDateTime fechaPrestamo) {
+    public void setFechaPrestamo(String fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
 
-    public LocalDateTime getFechaLimiteCancelacion() {
+    public String getFechaLimiteCancelacion() {
         return fechaLimiteCancelacion;
     }
 
-    public void setFechaLimiteCancelacion(LocalDateTime fechaLimiteCancelacion) {
+    public void setFechaLimiteCancelacion(String fechaLimiteCancelacion) {
         this.fechaLimiteCancelacion = fechaLimiteCancelacion;
     }
     
