@@ -21,33 +21,48 @@
                     <h2 class="pt-4">Clientes registrados</h2>
                     <p >Para visualizar toda la información del cliente, incluyendo su tabla de amortización, presione el botón "ver". </p>
                 </div>
-                <form action="servletControlador?accion=buscar" method="get">
-                    <div class="row mb-3">
-                        <div class="col-auto">
-                            <input type="text" name="identificacion"  class="form-control" placeholder="Escribe una identificación">
+                <div class="row">
+                    <div class="col-auto">
+                        <form action="servletControlador?accion=buscar" method="get">
+                            <div class="col-auto">
+                                <div class="row mb-3">
+                                    <div class="col-auto">
+                                        <input type="text" name="identificacion"  class="form-control" placeholder="Escribe una identificación">
+                                    </div>
+                                    <div class="col-auto">
+                                        <button class="btn" type ="submit" style="background-color: #7dff00">
+                                            <i class="bi bi-search"></i> Buscar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>    
+                    </div>
+                    <div class="col">
+                        <div class="row justify-content-end">
+                            <div class="col-auto">
+                                <form <form action="servletControlador?accion=actualizar" method="get">
+                                    <button class="btn" type ="submit" style="background-color: #7dff00">
+                                        <i class="bi bi-arrow-clockwise"></i>
+                                    </button>
+                                </form> 
+                            </div>
                         </div>
-                        <div class="col-auto">
-                            <button class="btn" type ="submit" style="background-color: #7dff00">
-                                <i class="bi bi-search"></i> Buscar
-                            </button>
-                        </div>
-                    </div>      
-                </form>            
+                    </div>
+
+                </div>
+
             <%-- Aquí va la tabla bien mela --%>
             <jsp:include page = "lista_clientes.jsp"/>
             <div class ="row justify-content-start py-4">
                 <div class="col-auto">
-                    <a href ="#" class="btn btn-success btn-block" data-bs-toggle="modal" data-bs-target="#eliminarClienteModal">
+                    <a href ="#" class="btn btn-success btn-block" data-bs-toggle="modal" data-bs-target="#agregarClienteModal">
                         <i class="bi bi-plus" style="font"></i> Agregar cliente
                     </a>  
                 </div>
                 <jsp:include page = "agregar_cliente.jsp"/>
             </div>
-            <jsp:include page = "editar_cliente.jsp"/>
-            <jsp:include page = "editar_deuda_cliente.jsp"/>
-            <jsp:include page = "eliminar_cliente.jsp"/>
-
         </div>
-       <jsp:include page = "comunes/pie_de_pagina.jsp"/>     
+        <jsp:include page = "comunes/pie_de_pagina.jsp"/>     
     </body>
 </html>

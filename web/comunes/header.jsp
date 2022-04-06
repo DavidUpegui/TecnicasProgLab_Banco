@@ -7,7 +7,9 @@
 <header id = "main-header" class=" py-3" style="background-color: #92f037">
     <div class="container">
         <div class="col-9">
-            <h1><i class="bi bi-bank"></i> DU-Bank</h1>
+            <a href="index.jsp" style="color: black; text-decoration: inherit">
+                <h1><i class="bi bi-bank"></i> DU-Bank</h1>
+            </a>
         </div>
     </div>
     

@@ -21,7 +21,6 @@ public class Conexion {
     private static final String JDBC_PASSWORD = "1234";
     
     public static Connection getConnection() throws SQLException{
-        System.out.println("Pasa por conexion.");
         Connection conn = DriverManager.getConnection(JDBC_URL,JDBC_USER,JDBC_PASSWORD);
         return conn;
     }

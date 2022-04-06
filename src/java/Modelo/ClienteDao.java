@@ -24,8 +24,8 @@ public class ClienteDao {
     private static final String QUERY_SELECT_ITEM = "SELECT * FROM clientes_banco where id = ?";
     private static final String QUERY_INSERT = "INSERT INTO clientes_banco(id, nombre,apellido, telefono, email,valor_deuda,"
             + " tiempo_pago, dia_prestamo) VALUES(?,?,?,?,?,?,?,?)";
-    private static final String QUERY_UPDATE_CLIENTE = "UPDATE clientes_banco SET nombre = ?, apellido = ?, telefono = ?, "
-            + "email = ? WHERE id = ?";
+    private static final String QUERY_UPDATE = "UPDATE clientes_banco SET nombre = ?, apellido = ?, telefono = ?, "
+            + "email = ?, valor_deuda = ?, tiempo_pago = ?, dia_prestamo = ? WHERE id = ?";
      private static final String QUERY_UPDATE_DEUDA = "UPDATE clientes_banco SET valor_deuda = ?, tiempo_pago = ?, "
             + "dia_prestamo = ?  WHERE id = ?";
     private static final String QUERY_DELETE = "DELETE FROM clientes_banco WHERE id = ?";
@@ -47,7 +47,6 @@ public class ClienteDao {
                 String email = rs.getString("email");
                 double valorDeuda = rs.getDouble("valor_deuda");
                 int tiempoDePago = rs.getInt("tiempo_pago");
-                System.out.println("Termina de inscribir al cliente");
                 Deuda deuda = new Deuda(valorDeuda,(double) 0.011, tiempoDePago);
                 Cliente c = new Cliente(id,nombre,apellido, telefono, email, deuda);
                 lista.add(c);
@@ -78,13 +77,13 @@ public class ClienteDao {
             rs = stms.executeQuery();
             while (rs.next()){
                 String id = rs.getString("id");
-                String nombre = rs.getString("name");
-                String apellido = rs.getString("last_name");
+                String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
                 String telefono = rs.getString("telefono");
                 String email = rs.getString("email");
                 double valorDeuda = rs.getDouble("valor_deuda");
                 int tiempoDePago = rs.getInt("tiempo_pago");
-                String diaPrestamo = String.valueOf(rs.getDate("dia_prestamo"));
+                Date diaPrestamo = rs.getDate("dia_prestamo");
                 Deuda deuda = new Deuda(valorDeuda, (double)0.011, tiempoDePago, diaPrestamo);
                 c.setId(id);
                 c.setNombre(nombre);
@@ -116,8 +115,8 @@ public class ClienteDao {
             stms.setString(5, c.getEmail());
             stms.setDouble(6, c.getDeuda().getValorDeuda());
             stms.setInt(7, c.getDeuda().getTiempoDePago());
-            stms.setDate(8, Date.valueOf(c.getDeuda().getFechaPrestamo()));
-            rows  =stms.executeUpdate();
+            stms.setDate(8, new Date(System.currentTimeMillis()));
+            rows  = stms.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
@@ -128,15 +127,19 @@ public class ClienteDao {
         return rows;   
     }
      
-    public int updateClienteData(Cliente c){
+    public int updateCliente(Cliente c){
         int rows = 0;
         try {
             conn = Conexion.getConnection();
-            stms = conn.prepareStatement(QUERY_UPDATE_CLIENTE);
+            stms = conn.prepareStatement(QUERY_UPDATE);
             stms.setString(1, c.getNombre());
             stms.setString(2, c.getApellido());
             stms.setString(3, c.getTelefono());
             stms.setString(4, c.getEmail());
+            stms.setDouble(5, c.getDeuda().getValorDeuda());
+            stms.setInt(6, c.getDeuda().getTiempoDePago());
+            stms.setDate(7, new Date(System.currentTimeMillis()));
+            stms.setString(8, c.getId());
             rows  =stms.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -155,7 +158,7 @@ public class ClienteDao {
             stms = conn.prepareStatement(QUERY_UPDATE_DEUDA);
             stms.setDouble(1, d.getValorDeuda());
             stms.setInt(2, d.getTiempoDePago());
-            stms.setDate(3, Date.valueOf(d.getFechaPrestamo()));
+            stms.setDate(3, new Date(System.currentTimeMillis()));
             rows  =stms.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -185,9 +188,10 @@ public class ClienteDao {
     }
     
      public static void main(String[] args) throws SQLException {
-        ClienteDao c = new ClienteDao();
-        ArrayList<Cliente> lista = c.CargarListaPersonas();
-        System.out.println(lista.get(0).getNombre());
+        ClienteDao cDao = new ClienteDao();
+        Cliente c= new Cliente("1515151","Daniel", "Upegui Londoño", "4538433" ,"danielito@gmail.com", new Deuda(1400, (double) 0.011, 12, new Date(System.currentTimeMillis())));
+        Cliente c2 = new Cliente("09876");
+        cDao.Delete(c2);
     }
     
     

@@ -5,7 +5,7 @@
  */
 package Modelo;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 /**
  *
@@ -15,13 +15,13 @@ public class Deuda {
     private double valorDeuda;
     private double valorInteres;
     private int tiempoDePago;
-    private String fechaPrestamo;
+    private Date fechaPrestamo = new Date(System.currentTimeMillis());
     private String fechaLimiteCancelacion;   
     
         public Deuda() {
     }
 
-    public Deuda(double valorDeuda, double valorInteres, int tiempoDePago, String fechaPrestamo) {
+    public Deuda(double valorDeuda, double valorInteres, int tiempoDePago, Date fechaPrestamo) {
         this.valorDeuda = valorDeuda;
         this.valorInteres = valorInteres;
         this.tiempoDePago = tiempoDePago;
@@ -63,11 +63,11 @@ public class Deuda {
         this.tiempoDePago = tiempoDePago;
     }
 
-    public String getFechaPrestamo() {
+    public Date getFechaPrestamo() {
         return fechaPrestamo;
     }
 
-    public void setFechaPrestamo(String fechaPrestamo) {
+    public void setFechaPrestamo(Date fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
 

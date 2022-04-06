@@ -11,7 +11,7 @@
                 <h5 class="modal-title">Agregar Cliente</h5>
                 <button class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <form action="servletControlador?accion=insertar" method="get">
+            <form action="servletControlador?accion=insertar" method="POST">
                 <div class="modal-body">
                     <h6><strong>Ingrese los datos del nuevo cliente:</strong> </h6>
                     <div class="row justify-content-between">
