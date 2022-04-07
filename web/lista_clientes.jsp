@@ -43,7 +43,7 @@
                                                 </form>
                                             </div>
                                             <div class="col-auto g-1">
-                                                <form action="servletControlador?accion=eliminar&id=${cliente.getId()}" method="GET">
+                                                <form action ="servletControlador?accion=eliminar&id=${cliente.getId()}" method = "POST" >
                                                     <button type = "submit" class="btn btn-danger">
                                                         <i class="bi bi-trash3"></i>
                                                     </button>

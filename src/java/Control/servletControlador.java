@@ -39,9 +39,6 @@ public class servletControlador extends HttpServlet {
         System.out.println("La accion es en get es: " + accion);
          if (accion !=null){
             switch(accion){
-                case "eliminar":
-                    this.btnEliminar(request, response);
-                    break;
                 default:
                     this.accionDefault(request, response);break;                    
             }
@@ -68,10 +65,11 @@ public class servletControlador extends HttpServlet {
                 case "insertar":
                     this.btnGuardarCliente(request, response);
                     break;
-//                case "eliminar":
-//                    this.btnEliminar(request,response);
                 case "detalles":
                     this.verDetalles(request, response);
+                    break;
+                case "eliminar":
+                    this.btnEliminar(request, response);
                     break;
                 case "primereditar":
                     this.btnPrimerEditar(request, response);
